@@ -159,4 +159,5 @@ this.beforeEach(function() {
      cy.visit('./src/privacy.html')
     })
 
+    
 })
