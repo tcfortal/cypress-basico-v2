@@ -21,7 +21,7 @@ this.beforeEach(function() {
 
         cy.get('.success').should('be.visible')
 
-    
+    })
 
     it('exibe mensagem de erro ao submeter o formulário com um email com formatação', function(){
         cy.get('#firstName').type('Thiago')
