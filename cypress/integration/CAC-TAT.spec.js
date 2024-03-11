@@ -3,6 +3,7 @@
 const { Button } = require("bootstrap")
 
 describe('Central de Atendimento ao Cliente TAT', function() {
+const THREE_SECONDS_IN_MS = 3000    
 this.beforeEach(function() {
     cy.visit('./src/index.html')
 })
@@ -11,8 +12,9 @@ this.beforeEach(function() {
         cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
     })
 
-    it('preenche os campos obrigatórios e envia formulário', function() {
+    it.only('preenche os campos obrigatórios e envia formulário', function() {
         const textLong = "teste - teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste"
+        cy.clock()
         cy.get('#firstName').type('Thiago')
         cy.get('#lastName').type('costa')
         cy.get('#email').type('thiagocesarcosta13@gmail.com')
@@ -20,10 +22,14 @@ this.beforeEach(function() {
         cy.contains('button', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+         cy.tick(THREE_SECONDS_IN_MS)
+        cy.get('.success').should('not.be.visible')
+
 
     })
 
-    it('exibe mensagem de erro ao submeter o formulário com um email com formatação', function(){
+    it.only('exibe mensagem de erro ao submeter o formulário com um email com formatação', function(){
+        cy.clock()
         cy.get('#firstName').type('Thiago')
         cy.get('#lastName').type('costa')
         cy.get('#email').type('thiagocesarcosta13@gmail,com')
@@ -31,6 +37,8 @@ this.beforeEach(function() {
         cy.get('button[type="submit"]').click()
 
         cy.get('.error').should('be.visible')
+        cy.tick(THREE_SECONDS_IN_MS)
+        cy.get('.success').should('not.be.visible')
 
     })
 
