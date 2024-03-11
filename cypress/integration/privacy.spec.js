@@ -59,6 +59,5 @@ Cypress._.times(1, function(){
         .should('be.visible')
     } )
 
-    
 })
 })
