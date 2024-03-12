@@ -12,7 +12,7 @@ this.beforeEach(function() {
         cy.title().should('be.equal', 'Central de Atendimento ao Cliente TAT')
     })
 
-    it.only('preenche os campos obrigatórios e envia formulário', function() {
+    it('preenche os campos obrigatórios e envia formulário', function() {
         const textLong = "teste - teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste- teste - teste - teste"
         cy.clock()
         cy.get('#firstName').type('Thiago')
@@ -28,7 +28,7 @@ this.beforeEach(function() {
 
     })
 
-    it.only('exibe mensagem de erro ao submeter o formulário com um email com formatação', function(){
+    it('exibe mensagem de erro ao submeter o formulário com um email com formatação', function(){
         cy.clock()
         cy.get('#firstName').type('Thiago')
         cy.get('#lastName').type('costa')
